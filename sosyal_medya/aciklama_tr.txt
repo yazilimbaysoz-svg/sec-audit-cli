@@ -1,0 +1,22 @@
+Yeni bir projeyi klonladın. İlk soru: "Acaba burada `.env` içinde API anahtarı var mı, `requirements.txt` bilinen bir CVE taşıyor mu, kodda `eval(` var mı?" 🔍
+
+**sec-audit-cli** bu üç soruyu tek komutla, saniyeler içinde yanıtlıyor. Harici servise ihtiyaç duymaz (opsiyonel OSV modu dışında), sıfır çalışma zamanı bağımlılığıyla çalışır ve doğrudan CI pipeline'ına girer.
+
+Çözdüğü problem: güvenlik denetimi için birden fazla araca, uzun kurulumlara ve bulut servislerine bağımlı olmak. Oysa çoğu proje için gereken şey hızlı, yerel ve güvenilir bir ilk taramadır.
+
+Öne çıkan özellikler:
+🔐 Üç tarayıcı tek seferde: secret (AWS, GitHub, OpenAI, Stripe, JWT, PEM + Shannon entropisi), bağımlılık (9 format, gömülü CVE veritabanı) ve OWASP (injection, XSS, SSRF, path traversal, weak crypto).
+🛡️ Güvenli çıktı: bulunan gizli anahtarlar asla ham gösterilmez; ilk/son 4 karakter, yıldız maskesi ve SHA-256 parmak izi yazdırılır.
+⚡ CI dostu: deterministik JSON raporu, `--fail-on` eşikleri ve anlamlı çıkış kodları. Paralel dosya analizi, dizin budama ve boyut sınırıyla oldukça hızlı.
+
+Kurulumu 10 saniye sürer:
+git clone https://github.com/yazilimbaysoz-svg/sec-audit-cli.git
+cd sec-audit-cli && uv venv && uv pip install -e .
+sec-audit . --fail-on high
+
+MIT lisanslı, tamamen açık kaynak. Taramayı başlat, bulguyu gör, yıldızı bırak ⭐
+
+👇 Kaydır: problem, üç tarayıcı, güvenli çıktı ve kurulum.
+🔗 github.com/yazilimbaysoz-svg/sec-audit-cli
+
+#secaudit #secauditcli #siberguvenlik #cybersecurity #opensource #acikkaynak #devsecops #security #python #cli #devtools #github #ci #cicd #secretscanning #cve #owasp #vulnerability #pentest #guvenlik #yazilim #softwareengineering #developertools #zerodependencies #buildinpublic #hacktoberfest
