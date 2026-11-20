@@ -1,0 +1,28 @@
+rules:
+  - id: no-dynamic-eval
+    languages: [python]
+    severity: ERROR
+    message: "Dynamic eval/exec usage is forbidden in this codebase"
+    pattern-either:
+      - pattern: eval(...)
+      - pattern: exec(...)
+
+  - id: no-shell-injection
+    languages: [python]
+    severity: ERROR
+    message: "shell=True is forbidden; pass an argument list instead"
+    pattern: subprocess.$METHOD(..., shell=True)
+
+  - id: no-unsafe-deserialization
+    languages: [python]
+    severity: ERROR
+    message: "Unsafe pickle deserialization detected"
+    pattern-either:
+      - pattern: pickle.load(...)
+      - pattern: pickle.loads(...)
+
+  - id: no-hardcoded-credential
+    languages: [python]
+    severity: ERROR
+    message: "Possible hardcoded credential detected"
+    pattern-regex: '(?i)(api[_-]?key|secret|token|password)\s*=\s*["''][A-Za-z0-9_\-]{20,}["'']'
